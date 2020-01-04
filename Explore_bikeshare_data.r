@@ -19,7 +19,7 @@ head(ny)
 library(ggplot2)
 
 qplot(x=Trip.Duration, data = ny, binwidth = 60,
-      color=I('black'), fill=I('blue'),
+      color=I('black'), fill=I('red'),
       main='Distribution of Trip Duration in New York',
       xlab='Trip Duration - Seconds', ylab='Count of Trips') +
    scale_x_continuous(limits=c(0,3000), breaks=seq(0,3000,300))
