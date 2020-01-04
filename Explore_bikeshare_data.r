@@ -9,14 +9,18 @@ head(wash)
 
 head(chi)
 
+
+Question 1
+What is the distribution of trip duration times in New York?
+
 ny = read.csv('new_york_city.csv')
 head(ny)
 
 library(ggplot2)
 
-qplot(x=Trip.Duration, data = ny, binwidth = 60, 
-      color=I('black'), fill=I('blue'), 
-      main='Distribution of Trip Duration in New York', 
+qplot(x=Trip.Duration, data = ny, binwidth = 60,
+      color=I('black'), fill=I('blue'),
+      main='Distribution of Trip Duration in New York',
       xlab='Trip Duration - Seconds', ylab='Count of Trips') +
    scale_x_continuous(limits=c(0,3000), breaks=seq(0,3000,300))
 
@@ -30,6 +34,9 @@ minute.conversion=function(num) {
 minute.conversion(903.6)
 
 minute.conversion(610)
+
+Question 2
+How does trip duration compare between males and females in Chicago?
 
 #I am unsure why running the code this way is still producing the N/A  boxplot
 #I followed the same structure as the lesson - hopefully it is not a big issue for the analysis!
@@ -61,6 +68,9 @@ minute.conversion(830)
 
 minute.conversion(1000)
 
+Question 3
+How do customer trip duration times compare to those of subscribers in DC?
+
 ##wasn't sure how to remove the N/A from the results without getting an error message
 ##using !is.na(Customer.Type) in the first line did not work for me for whatever reason
 
@@ -74,8 +84,8 @@ summary(wash)
 by(wash$Trip.Duration, wash$User.Type, summary)
 
 qplot(x=Trip.Duration, data=subset(wash, !is.na(User.Type)), binwidth=60,
-      color=I('black'), fill=I('orange'), 
-      main='Distribution of Trip Duration by Customer Type in Washington', 
+      color=I('black'), fill=I('orange'),
+      main='Distribution of Trip Duration by Customer Type in Washington',
       xlab='Trip Duration - Seconds', ylab='Count of Trips') +
 scale_x_continuous(limits=c(0,2700), breaks=seq(0,2700,600)) +
 facet_wrap(~User.Type)
